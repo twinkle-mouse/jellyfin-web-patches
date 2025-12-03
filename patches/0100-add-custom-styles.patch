@@ -1,0 +1,27 @@
+From ca2ff766a98fc67bfe995700fea841a4216a72ed Mon Sep 17 00:00:00 2001
+From: Madeline Sparkles <madeline@mouse.lgbt>
+Date: Wed, 12 Nov 2025 16:07:26 +0100
+Subject: [PATCH] add custom styles
+
+---
+ src/index.jsx | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/index.jsx b/src/index.jsx
+index 30e8b8aa6..2bff13e08 100644
+--- a/src/index.jsx
++++ b/src/index.jsx
+@@ -46,6 +46,10 @@ import './styles/dashboard.scss';
+ import './styles/detailtable.scss';
+ import './styles/librarybrowser.scss';
+ 
++import './styles/custom/catppuccin.css';
++import './styles/custom/catppuccin-macchiato.css';
++import './styles/custom/noseyrodent.css';
++
+ async function init() {
+     // Log current version to console to help out with issue triage and debugging
+     console.info(
+-- 
+2.51.2
+
