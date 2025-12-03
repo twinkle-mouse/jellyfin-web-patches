@@ -35,6 +35,7 @@ git checkout "release-$MAJOR.$MINOR.z" || exit
 git reset origin/"release-$MAJOR.$MINOR.z" --hard || exit
 git apply --verbose "$PROJDIR/patches"/* || exit
 
+export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/init-nvm.sh
 nvm install 20
 nvm use 20
