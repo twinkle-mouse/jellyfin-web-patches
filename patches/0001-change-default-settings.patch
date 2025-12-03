@@ -1,0 +1,39 @@
+From 5c683df9c6e353bd888d9ed3aead1fb8a0416027 Mon Sep 17 00:00:00 2001
+From: Madeline Sparkles <madeline@mouse.lgbt>
+Date: Fri, 18 Apr 2025 20:10:24 +0200
+Subject: [PATCH] change default settings
+
+---
+ src/scripts/settings/appSettings.js  | 2 +-
+ src/scripts/settings/userSettings.js | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/scripts/settings/appSettings.js b/src/scripts/settings/appSettings.js
+index e10d6053d..346760a18 100644
+--- a/src/scripts/settings/appSettings.js
++++ b/src/scripts/settings/appSettings.js
+@@ -218,7 +218,7 @@ class AppSettings {
+             return this.set('disableVbrAudio', val.toString());
+         }
+ 
+-        return toBoolean(this.get('disableVbrAudio'), false);
++        return toBoolean(this.get('disableVbrAudio'), true);
+     }
+ 
+     /**
+diff --git a/src/scripts/settings/userSettings.js b/src/scripts/settings/userSettings.js
+index 23e1f000f..1be8aeb38 100644
+--- a/src/scripts/settings/userSettings.js
++++ b/src/scripts/settings/userSettings.js
+@@ -188,7 +188,7 @@ export class UserSettings {
+             return this.set('selectAudioNormalization', val, false);
+         }
+ 
+-        return this.get('selectAudioNormalization', false) || 'TrackGain';
++        return this.get('selectAudioNormalization', false) || 'Off';
+     }
+ 
+     /**
+-- 
+2.49.0
+
