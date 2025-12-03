@@ -1,0 +1,31 @@
+From 92795582ac48701538cbeb1d7d9e08847ac7738a Mon Sep 17 00:00:00 2001
+From: Madeline Sparkles <madeline@mouse.lgbt>
+Date: Wed, 12 Nov 2025 16:42:07 +0100
+Subject: [PATCH] neuter ThemeCss.tsx because we're using our own styles
+
+---
+ src/components/ThemeCss.tsx | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/src/components/ThemeCss.tsx b/src/components/ThemeCss.tsx
+index 9dabeee15..1df0fcac3 100644
+--- a/src/components/ThemeCss.tsx
++++ b/src/components/ThemeCss.tsx
+@@ -22,13 +22,7 @@ const ThemeCss: FC<ThemeCssProps> = ({
+         if (id) setThemeUrl(getThemeUrl(id));
+     }, [dashboard, dashboardTheme, theme]);
+ 
+-    return (
+-        <link
+-            rel='stylesheet'
+-            type='text/css'
+-            href={themeUrl}
+-        />
+-    );
++    return <></>;
+ };
+ 
+ export default ThemeCss;
+-- 
+2.51.2
+
