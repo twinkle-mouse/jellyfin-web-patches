@@ -1,7 +1,7 @@
 #!/bin/sh
 
 function semverParseInto() {
-    local RE='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
+    local RE='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.-]\([0-9]*\)\([0-9A-Za-z-]*\)'
     #MAJOR
     eval $2=`echo $1 | sed -e "s#$RE#\1#"`
     #MINOR
@@ -31,14 +31,13 @@ cd "$PROJDIR/jellyfin-web" || exit
 git fetch || exit
 git reset --hard || exit
 git restore . || exit
-git checkout "release-$MAJOR.$MINOR.z" || exit
-git reset origin/"release-$MAJOR.$MINOR.z" --hard || exit
+git checkout origin/master || exit
+git reset "v$MAJOR.$MINOR" --hard || exit
 git apply --verbose "$PROJDIR/patches"/* || exit
 
 export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/init-nvm.sh
-nvm install 20
-nvm use 20
+nvm use 24
 
 npm install || exit
 
@@ -51,9 +50,11 @@ mkdir -p ./src/styles/custom/noseyrodent
 wget  -O ./src/styles/custom/noseyrodent/noseyrodent-Regular.woff2 https://the.sqky.one/.assets/fonts/noseyrodent/noseyrodent-Regular.woff2
 wget  -O ./src/styles/custom/noseyrodent/noseyrodent-Bold.woff2 https://the.sqky.one/.assets/fonts/noseyrodent/noseyrodent-Bold.woff2
 
-sudo npm run build:production || exit
+npm run build:production || exit
+
 sudo mkdir -p "$INSTALL" || exit
 sudo rm -rf "$INSTALL/web" || exit
 sudo mv dist "$INSTALL/web" || exit
+sudo chown root:root -R "$INSTALL/web" || exit
 
 echo "Successfully installed to $INSTALL."
